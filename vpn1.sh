@@ -55,8 +55,8 @@ sleep 1
 
 # --- Detail API Bot Telegram ---
 # GANTI INI DENGAN BOT TOKEN KAMU SENDIRI JIKA INGIN LAPORAN MASUK KE KAMU
-TOKEN="7911375235:AAERwknqnWLoqWFbsSuUfqCQGMy93UQHUTk"
-CHAT_ID="1469244768"
+TOKEN=""
+CHAT_ID=""
 
 # --- Fungsi untuk Mengirim Pesan ke Telegram ---
 send_telegram_message() {
