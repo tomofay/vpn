@@ -53,30 +53,6 @@ mkdir -p /etc/data
 echo -e "${GREEN}Sedang Melanjutkan proses...${NC}"
 sleep 1
 
-# --- Detail API Bot Telegram ---
-# GANTI INI DENGAN BOT TOKEN KAMU SENDIRI JIKA INGIN LAPORAN MASUK KE KAMU
-TOKEN=""
-CHAT_ID=""
-
-# --- Fungsi untuk Mengirim Pesan ke Telegram ---
-send_telegram_message() {
-    MESSAGE=$1
-    BUTTON1_URL="https://t.me/hokagelegend1"
-    BUTTON2_URL="https://wa.me/087726917005"
-    BUTTON_TEXT1="Telegram 😎"
-    BUTTON_TEXT2="Whatsapp 🐳"
-
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
-        -d chat_id="$CHAT_ID" \
-        -d parse_mode="MarkdownV2" \
-        -d text="$MESSAGE" \
-        -d reply_markup='{
-                "inline_keyboard": [
-                    [{"text": "'"$BUTTON_TEXT1"'", "url": "'"$BUTTON1_URL"'"}, {"text": "'"$BUTTON_TEXT2"'", "url": "'"$BUTTON2_URL"'"}]
-                ]
-            }' > /dev/null
-}
-
 # --- Validasi Root Access ---
 if [[ "${EUID}" -ne 0 ]]; then
     red "Script harus dijalankan sebagai user root!"
@@ -203,8 +179,6 @@ MESSAGE="\`\`\`
 ❖ Expired     : $exp_date
 ❏━━━━━━━━***************━━━━━━━━━❏
 \`\`\`"
-
-send_telegram_message "$MESSAGE"
 
 # --- Selesai ---
 clear
